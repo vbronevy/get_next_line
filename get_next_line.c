@@ -6,33 +6,36 @@
 /*   By: vbronevy <vbronevy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 12:25:50 by vbronevy          #+#    #+#             */
-/*   Updated: 2025/03/12 15:07:34 by vbronevy         ###   ########.fr       */
+/*   Updated: 2025/03/15 13:22:20 by vbronevy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-#define BUFFER_SIZE 1
+#ifndef BUFFER_SIZE
+#define BUFFER_SIZE 42
+#endif
 
 char	*get_next_line(int fd)
 {
 	static int	i;
 	char		*c;
+	char		*holder;
 
 	i = 0;
-	c = (char *)calloc(100, sizeof(char));
+	c = (char *)malloc(BUFFER_SIZE);
+	// c[0] = '\0';
+	// holder = (char *)malloc(BUFFER_SIZE);
 	if (fd == -1)
 		return NULL;
-
-	while (c[i] != '\n' || c[i] != '\0')
-	{
-		if (c[i] == '\n')
-			break ;
-		read(fd, c, BUFFER_SIZE);
-		i++;
-		// c++;
-	}
-	// read(fd, c, 12);
+	read(fd, c, BUFFER_SIZE);
+	// while(&c[i] != '\n' || &c[i] != '\0')
+	// {
+	// 	read(fd, &c[i], 1);
+	// 	i++;
+	// }
+	// free(holder);
+	// holder[i] = '\0';
 	return (c);
 }
 
@@ -45,7 +48,7 @@ int	main(void)
 	str = get_next_line(fd);
 	printf("%s\n", str);
 	free(str);
-	str = get_next_line(fd);
-	printf("%s\n", str);
-	free(str);
+	// str = get_next_line(fd);
+	// printf("%s\n", str);
+	// free(str);
 }
