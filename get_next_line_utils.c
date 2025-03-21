@@ -21,6 +21,6 @@ char	*read_ft(int fd)
 	size = read(fd, str, BUFFER_SIZE);
 	if(!str)
 		return (NULL);
-	str[size + 1] = '\0';
+	str[BUFFER_SIZE + 1] = '\0';
 	return (str);
 }
