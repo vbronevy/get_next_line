@@ -13,6 +13,10 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+#ifndef BUFFER_SIZE
+#define BUFFER_SIZE 12
+#endif
+
 # include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
@@ -21,5 +25,6 @@
 # include <string.h>
 
 char	*get_next_line(int fd);
+char	*read_ft(int fd);
 
 #endif

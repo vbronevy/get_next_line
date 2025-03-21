@@ -10,3 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
+
+char	*read_ft(int fd)
+{
+	char*	str;
+	int		size;
+
+	str = malloc(BUFFER_SIZE + 1);
+	size = read(fd, str, BUFFER_SIZE);
+	if(!str)
+		return (NULL);
+	str[size + 1] = '\0';
+	return (str);
+}
