@@ -14,13 +14,43 @@
 
 char	*read_ft(int fd)
 {
-	char*	str;
+	char	*buffer;
 	int		size;
 
-	str = malloc(BUFFER_SIZE + 1);
-	size = read(fd, str, BUFFER_SIZE);
-	if(!str)
-		return (NULL);
-	str[BUFFER_SIZE + 1] = '\0';
-	return (str);
+	buffer = malloc(4092);
+	size = read(fd, buffer, 4091);
+
+	buffer[4091] = '\0';
+	return (buffer);
+}
+
+char  *ft_substr_gnl(char *str, int index)
+{
+	char	*substr;
+	int		i;
+
+	substr = malloc(index + 2);
+	while(str[i])
+	{
+		str[i] = substr[i];
+		if(str[i] == '\n')
+			break;
+		i++;
+	}
+	str[i + 1] = '\0';
+	return(substr);
+}
+
+int ft_strchr_gnl(char *str)
+{
+	int	index;
+
+	index = 0;
+	while(str[index])
+	{
+		if(str[index] == '\n')
+			break;
+		index++;
+	}
+	return(index);
 }

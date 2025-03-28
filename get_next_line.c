@@ -19,7 +19,6 @@ char	*get_next_line(int fd)
 
 	i = 0;
 	c = read_ft(fd);
-	memset(c, 0, BUFFER_SIZE + 1);
 	if (fd == -1)
 		return NULL;
 	while(i < BUFFER_SIZE)
