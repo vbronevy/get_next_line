@@ -20,11 +20,11 @@ char	*read_ft(int fd)
 	buffer = malloc(4092);
 	size = read(fd, buffer, 4091);
 
-	buffer[4091] = '\0';
+	buffer[size + 1] = '\0';
 	return (buffer);
 }
 
-char  *ft_substr_gnl(char *str, int index)
+char	*ft_substr_gnl(char *str, int index)
 {
 	char	*substr;
 	int		i;
@@ -37,11 +37,10 @@ char  *ft_substr_gnl(char *str, int index)
 			break;
 		i++;
 	}
-	str[i + 1] = '\0';
 	return(substr);
 }
 
-int ft_strchr_gnl(char *str)
+int	ft_strchr_gnl(char *str)
 {
 	int	index;
 

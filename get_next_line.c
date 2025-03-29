@@ -15,40 +15,31 @@
 char	*get_next_line(int fd)
 {
 	static int	i;
-	char		*c;
+	char		*c;		
 
 	i = 0;
 	c = read_ft(fd);
 	if (fd == -1)
 		return NULL;
-	while(i < BUFFER_SIZE)
-	{
-		c = read_ft(fd);
-		if(c[i] == '\0' || c[i] == '\n')
-			break ;
-		free(c);
-		i++;
-	}
-	// if(c[i] == '\n')
-	// 	c[i + 1] = '\0';
-	// else
-	// 	c[i] = '\0';
+	i = ft_strchr_gnl(c);
+	free(c);
+	c = ft_substr_gnl(c,i);
 	return (c);
 }
 
 int	main(void)
 {
 	int		fd;
-	char	*str;
+	char	*str[200];
+	char	*string;
 	int 	num;
 
 	fd = open("test.txt", O_RDONLY);
-	// num = read(fd, str, BUFFER_SIZE);
-	// printf("%d\n", num);
-	str = get_next_line(fd);
-	printf("%s\n", str);
-	free(str);
-	// str = get_next_line(fd);
-	// printf("%s\n", str);
-	// free(str);
+	string = get_next_line(fd);
+	printf("%s\n", string);
+	string = get_next_line(fd);
+	printf("%s\n", string);
+	string = get_next_line(fd);
+	printf("%s\n", string);
+	free(string);
 }
