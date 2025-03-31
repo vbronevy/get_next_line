@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 42
+#define BUFFER_SIZE 1
 #endif
 
 # include <errno.h>
@@ -24,9 +24,13 @@
 # include <stdlib.h>
 # include <string.h>
 
-char	*get_next_line(int fd);
-char	*read_ft(int fd);
-char	*ft_substr_gnl(char *str, int index);
-int		ft_strchr_gnl(char *str);
+char    *get_next_line(int fd);
+char    *read_and_append(int fd, char *buffer);
+int     find_newline(char *str);
+char    *extract_line(char *str, int len);
+char    *trim_buffer(char *buffer, int start);
+char    *ft_strjoin(char *s1, char *s2);
+char    *ft_strdup(char *str);
+size_t  ft_strlen(const char *s);
 
 #endif
